@@ -15,11 +15,12 @@ var mainProcessVars = {
 
 ipcMain.on('variable-request', function (event, arg) {
   console.log("process reuqest")
-  fs.readFile('test', 'utf8', (err, contents) => {
-    if (err) throw err;
-    //event.sender.send('variable-reply', [contents]);
-    event.sender.send('variable-reply', [app.getVersion()]);
-  });
+  // fs.readFile('test', 'utf8', (err, contents) => {
+  //   if (err) throw err;
+  //   //event.sender.send('variable-reply', [contents]);
+  //   event.sender.send('variable-reply', [app.getVersion()]);
+  // });
+  event.sender.send('variable-reply', [app.getVersion()]);
 });
 
 autoUpdater.checkForUpdatesAndNotify();
