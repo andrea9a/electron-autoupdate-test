@@ -4,3 +4,13 @@
 // `nodeIntegration` is turned off. Use `preload.js` to
 // selectively enable features needed in the rendering
 // process.
+// const electron = require('electron');
+const { ipcRenderer } = require('electron');
+
+console.log("seondig")
+ipcRenderer.send('variable-request', ['token']);
+
+ipcRenderer.on('variable-reply', function (event, args) {
+  console.log(args[0]); // "name"
+  document.getElementById("titolo").innerHTML = args[0]
+});
